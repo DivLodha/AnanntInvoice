@@ -1,0 +1,18 @@
+
+.error {
+    color: #ff0000;
+    font-size: 16px;
+    display: block;
+    font-weight: normal;
+    font-family: JannaLT-Regular;
+    margin-top: 2px;
+}
+
+.speaker_div{
+    height: 350px;
+    float: left; 
+    width:100%;
+    margin-bottom:20px;
+    text-align:center;
+    padding:15px;
+}

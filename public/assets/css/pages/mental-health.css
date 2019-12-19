@@ -1,0 +1,27 @@
+.step-form .steps.clearfix {
+    display: none;
+}
+
+#mental-health-container .actions.clearfix {
+    display: none;
+}
+.ADHD_symptoms label{
+    font-weight: 100;
+    font-family: 'JannaLT-Regular';
+    margin-top: 0px;
+}
+
+.adhd-checkbox-container input[type=checkbox]{
+    height: auto;
+}
+.adhd-checkbox-container{
+    width: 10px;
+}
+
+
+
+
+
+
+
+

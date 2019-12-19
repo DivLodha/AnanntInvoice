@@ -1,0 +1,148 @@
+
+@media screen and (max-width: 1300px){
+    .top-navibation-mask .nav-main-menu .navbar-nav>li{
+        min-width: 188px;
+    }
+}
+@media screen and (max-width: 760px){
+
+
+    body .mobile-top-bar {
+        position: fixed;
+        width: 100%;
+        background: #115E6E;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        height: 48px;
+        padding: 11px 0px;
+    }
+
+   .mobile-top-bar  .header-topbar-menu .phone-icon,
+   .mobile-top-bar  .header-topbar-menu .mobile-lang {
+        width: 50px;
+    }
+    .mobile-top-bar  .header-topbar-menu .mobile-logo img {
+        width: 22px;
+    }
+    .mobile-top-bar  .header-topbar-menu .mobile-lang .lang {
+        float: right;
+        border: 1.3px solid #fff;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 10px;
+        display: inline-block;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+    .mobile-top-bar .header-topbar-menu .mobile-lang .arbic {
+        padding: 0px 12px;
+        padding-bottom: 5px;
+    }
+    .mobile-top-bar .header-topbar-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-display-block{
+        display: inline-block;
+    }
+    .mbdb{
+        display: block !important;
+    }
+    .mbpd0{
+        padding: 0px !important;
+    }
+
+
+    /****************** Mobile top menu styles ****************/
+    #left-top-menu-ico{
+        font-size: 24px;
+        /*border: 1px solid;*/
+        padding: 2px;
+        border-radius: 5px;
+        width: 30px;
+        float: right;
+    }
+    .mobile-dropdown-menu {
+        top: 48px;
+        color: #f45757;
+        z-index: 9999999999999999;
+        font-size: 22px;
+        background: #1a94ab;
+        width: 100%;
+        position: fixed;
+        left: 0px;
+        display: none;
+    }
+    .mobile-dropdown-menu ul.top-bar-menu{
+        padding-left: 0px;
+        width: 92%;
+        margin: 0 auto;
+        padding-right: 0px;
+    }
+    .mobile-dropdown-menu ul.top-bar-menu li .dropdown-item{
+        display: none;
+    }
+    .mobile-dropdown-menu ul.top-bar-menu li{
+        width: 100%;
+        border-bottom: 1px solid #0e7a90;
+        float: left;
+        line-height: normal;
+        display: inline-block;
+        padding: 0;
+    }
+    .mobile-dropdown-menu ul.top-bar-menu li>a {
+        width: 100%;
+        display: block;
+        text-align: left;
+        font-size: 16px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 0px;
+        font-family: 'JannaLT-Regular';
+        color: #ffffff;
+        text-transform: capitalize;
+    }
+    .rtl .mobile-dropdown-menu ul.top-bar-menu li>a {
+        text-align: right;
+    }
+    .menu-desktop-view #menu-language-menu-arabic #menu-item-wpml-ls-27-ar,
+    .menu-desktop-view #menu-language-menu #menu-item-wpml-ls-27-en{
+        display: none;
+    }
+    .rtl .mobile-dropdown-menu ul.top-bar-menu li>a:before {
+        left: 15px;
+        right: unset;
+        transform: rotate(180deg);
+    }
+    .mobile-dropdown-menu ul.top-bar-menu li>a:before {
+        content: "";
+        position: absolute;
+        background: url(../images/footer-menu-dwn-arrow.png) no-repeat right center;
+        width: 10px;
+        height: 16px;
+        right: 15px;
+        margin-top: 7px;
+    }
+    /************** end mobile top menu styles *************/
+    .footer{
+        background: #1991a7 url(http://aljalilachildrens.ae/form/public/assets/images/footer-bg.jpg) no-repeat center top;
+    }
+    .tiles-list-top-text{
+        padding: 30px 0px 0px 0px;
+    }
+    .tiles-top-singin-btn{
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    .paedsx .custom-row-list{
+        float: unset;
+        margin: 0 auto;
+    }
+    .my-events.paedsx{
+        margin-top: 26px;
+    }
+}

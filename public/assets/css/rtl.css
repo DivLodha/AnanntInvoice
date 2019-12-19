@@ -1,0 +1,60 @@
+.rtl li a{
+    text-align: right;
+}
+button.rtl{
+    right: 270px  !important;
+}
+.address::before{
+    left: 215px !important;
+}
+.rtl .side-menu-wraper ul.side-bar-tab li a .fa.fa-caret-right {
+    float: left;
+    transform: rotate(180deg);
+}
+
+/******************new header menu **********************/
+.rtl ul.tab-menu li{
+    float: right;
+}
+.rtl #fixed-menu-container .nav-sub-menu {
+    float: right;
+}
+body.rtl .top-navibation-mask .nav-main-menu .navbar-nav > li {
+    min-width: 187px;
+    float: right;
+}
+.rtl #fixed-menu-container li {
+
+}
+.rtl #fixed-menu-container li {
+    float: left;
+}
+.rtl .top-navibation-mask .nav-main-menu .navbar-nav>li>a{
+    text-align: center;
+}
+.rtl .top-navibation-mask .nav-main-menu .navbar-nav>li.gray ul.submenu-nav li>a{
+    text-align: center;
+}
+.rtl #header-search-box{
+    text-align: left;
+}
+.rtl .footer-desktop-view .footer-menu-top-image-parent .footer-menu-text-custom ul li {
+    line-height: 17px;
+}
+.rtl  #chat-window-box.chatbox-wrapper.live-support{
+    left: 0px !important;
+    right: auto;
+}
+
+/******************new header menu **********************/
+
+@media (max-width: 767px){
+    .rtl .footer-mobile-view .menu-footer-mobile-menu-container ul#menu-footer-mobile-menu li a:before {
+        left: 15px;
+        right: unset;
+        transform: rotate(180deg);
+    }
+}
+body.rtl .content-area #requestMedicalReport {
+    text-align: right;
+}
