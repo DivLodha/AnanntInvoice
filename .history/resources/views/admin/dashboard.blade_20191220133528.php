@@ -304,7 +304,7 @@ height:500px;
                        
                         <div class="col-md-3">
                             <div class="margin-bottom-10" >
-                            <label for="course_start_date">Start Date</label>
+                            <label for="course_start_date">Please Select Start Date</label>
                                 <div class="input-group input-small date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                     <input type="text" class="form-control" id="course_start_date" name="course_start_date">
                                     <span class="input-group-btn">
@@ -317,7 +317,7 @@ height:500px;
                         </div>
                         <div class="col-md-3">
                             <div class="margin-bottom-10" >
-                                <label for="course_end_date">End Date</label>
+                                <label for="course_end_date">Please Select End Date</label>
                                 <div class="input-group input-small date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                     <input type="text" class="form-control" id="course_end_date" name="course_end_date">
                                     <span class="input-group-btn">
@@ -328,7 +328,7 @@ height:500px;
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                         <label for="course_end_date">Please Select Course</label>
                         <select class="bs-select form-control input-small" data-style="purple" name="overview_course" id="overview_course">
                                     <option value="">Courses</option>

@@ -240,7 +240,7 @@ height:500px;
                         <div class="col-md-5">
                             <div class="margin-bottom-10" >
                             <label for="start_date">Please Select Start Date</label>
-                                <div class="input-group input-small date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                <div class="input-group input- date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                     <input type="text" class="form-control" id="start_date" name="start_date">
                                     <span class="input-group-btn">
                                         <button class="btn default" type="button">
@@ -253,7 +253,7 @@ height:500px;
                         <div class="col-md-5">
                             <div class="margin-bottom-10" >
                                 <label for="end_date">Please Select End Date</label>
-                                <div class="input-group input-small date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
+                                <div class="input-group input- date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                     <input type="text" class="form-control" id="end_date" name="end_date">
                                     <span class="input-group-btn">
                                         <button class="btn default" type="button">
@@ -304,7 +304,7 @@ height:500px;
                        
                         <div class="col-md-3">
                             <div class="margin-bottom-10" >
-                            <label for="course_start_date">Start Date</label>
+                            <label for="course_start_date">Please Select Start Date</label>
                                 <div class="input-group input-small date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                     <input type="text" class="form-control" id="course_start_date" name="course_start_date">
                                     <span class="input-group-btn">
@@ -317,7 +317,7 @@ height:500px;
                         </div>
                         <div class="col-md-3">
                             <div class="margin-bottom-10" >
-                                <label for="course_end_date">End Date</label>
+                                <label for="course_end_date">Please Select End Date</label>
                                 <div class="input-group input-small date date-picker" data-date-format="yyyy-mm-dd" data-date-viewmode="years">
                                     <input type="text" class="form-control" id="course_end_date" name="course_end_date">
                                     <span class="input-group-btn">
