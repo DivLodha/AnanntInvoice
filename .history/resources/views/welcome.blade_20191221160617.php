@@ -74,7 +74,7 @@
                              @csrf
                         </form>
                     @else
-                        <a href="{{ route('login') }}" style="font-size:18px;">Login</a>
+                        <a href="{{ route('login') }}" style="font-size:26px;">Login</a>
 
                         <!-- @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>

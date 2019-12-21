@@ -101,11 +101,11 @@
             @endif
         </div>
 
-        <!-- @if (Route::has('password.request'))
+        @if (Route::has('password.request'))
             <div class="forgot">
             <a href="{{ route('password.request') }}">Forgot password?</a>
             </div>
-        @endif -->
+        @endif
         
         <button type="submit" class="btn btn-primary">Login</button>
 
