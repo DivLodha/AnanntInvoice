@@ -45,8 +45,8 @@
                                     <th> Id </th>
                                     <th> Name </th>
                                     <th> Email </th>
-                                    <th> Country </th>
-                                    <th> Created </th>
+                                    <th> Status </th>
+                                    <th> created </th>
                                     <th> Actions </th>
                                 </tr>
                                 </thead>
@@ -70,25 +70,19 @@
                                     <td data-id="{{$users->id}}">{{$count++}}</td>
                                     <td> {{$users->name}} </td>
                                     <td> {{$users->email}} </td>
-                                    <td>{{$users->country}}</td>
+
+                                    <td>
+                                        <span class="label label-sm label-success"> @if(!empty($users->email_verified_at)) Verified @else Pending @endif </span>
+                                    </td>
                                     <td>  {{$users->created_at}} </td>
                                     <td><div class="dropdown show">
-                                    @if($users->role == 1)
-                                    <a class="btn btn-secondary blue dropdown-toggle" href="#" role="button">
-                                              ADMIN
-                                    </a>
-                                    @else
-                                    <a class="btn btn-secondary green dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <a class="btn btn-secondary green dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Actions
                                               <i class="fa fa-angle-down"></i>
                                             </a>
-                                    @endif
+
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            @if($users->role != 1)
-                                            <li><a onclick="return confirm('Are you sure you want to delete this user?');" href="{{admin_url('users_destroy/'.$users->id)}}">
-                                                        <i class="icon-trash"></i>Delete</a>
-                                            </li>
-                                            @endif
+                                              <li><a href="{{admin_url("users/")}}/{{$users->id}}/view" target="_blank"><i class="icon-eye"></i> View Details </a></li>
                                             </div>
                                           </div>
                                     </td>

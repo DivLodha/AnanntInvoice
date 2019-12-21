@@ -27,7 +27,6 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'admin'], function() 
     Route::get('dashboard/date-wise/fetch_data' , 'admin\DashboardController@season_fetch_data');
     Route::get('dashboard/course-wise/fetch_data' , 'admin\DashboardController@course_fetch_data');
     Route::resource('users', 'admin\UserController');
-    Route::get('users_destroy/{id}', 'admin\UserController@destroy');
     Route::resource('invoice', 'admin\InvoiceController');
     //Route::get('invoice','admin\InvoiceController@index');
     Route::get('invoice/create/{id}','admin\InvoiceController@create');

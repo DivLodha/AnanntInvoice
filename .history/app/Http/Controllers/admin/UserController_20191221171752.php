@@ -5,9 +5,6 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Support\Facades\Hash;
-use Carbon\Carbon;
-
 class UserController extends Controller
 {
     /**
@@ -17,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users =  User::paginate(20);
+        $users =  User::whereRole(1)->paginate(20);
         return view('admin.users.index', ['list'=>$users]);
     }
 
@@ -32,14 +29,6 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        if(!empty($user)) {
-            $user->delete();
-        }
-        return redirect(admin_url('users'));
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -51,9 +40,9 @@ class UserController extends Controller
         //
         $this->validate($request, [
             'firstName' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'country' => 'required',
-            'password' => 'required|min:8',
+            'password' => 'required',
             'confirmPassword' => 'required|same:password'
         ]);
         $db = new User();
@@ -117,5 +106,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+    public function destroy($id)
+    {
+        //
+    }
 }

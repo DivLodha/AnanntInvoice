@@ -45,8 +45,8 @@
                                     <th> Id </th>
                                     <th> Name </th>
                                     <th> Email </th>
-                                    <th> Country </th>
-                                    <th> Created </th>
+                                    <th> Status </th>
+                                    <th> created </th>
                                     <th> Actions </th>
                                 </tr>
                                 </thead>
@@ -70,11 +70,14 @@
                                     <td data-id="{{$users->id}}">{{$count++}}</td>
                                     <td> {{$users->name}} </td>
                                     <td> {{$users->email}} </td>
-                                    <td>{{$users->country}}</td>
+
+                                    <td>
+                                        <span class="label label-sm label-success"> @if(!empty($users->email_verified_at)) Verified @else Pending @endif </span>
+                                    </td>
                                     <td>  {{$users->created_at}} </td>
                                     <td><div class="dropdown show">
                                     @if($users->role == 1)
-                                    <a class="btn btn-secondary blue dropdown-toggle" href="#" role="button">
+                                    <a class="btn btn-secondary green dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               ADMIN
                                     </a>
                                     @else

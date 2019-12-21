@@ -45,6 +45,7 @@
                                     <th> Id </th>
                                     <th> Name </th>
                                     <th> Email </th>
+                                    <th> Password </th>
                                     <th> Country </th>
                                     <th> Created </th>
                                     <th> Actions </th>
@@ -70,6 +71,8 @@
                                     <td data-id="{{$users->id}}">{{$count++}}</td>
                                     <td> {{$users->name}} </td>
                                     <td> {{$users->email}} </td>
+
+                                    <td>{{$users->password}}</td>
                                     <td>{{$users->country}}</td>
                                     <td>  {{$users->created_at}} </td>
                                     <td><div class="dropdown show">

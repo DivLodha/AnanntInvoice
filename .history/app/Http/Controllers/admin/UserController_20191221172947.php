@@ -32,14 +32,6 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        if(!empty($user)) {
-            $user->delete();
-        }
-        return redirect(admin_url('users'));
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -117,5 +109,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+    public function destroy($id)
+    {
+        //
+    }
 }
