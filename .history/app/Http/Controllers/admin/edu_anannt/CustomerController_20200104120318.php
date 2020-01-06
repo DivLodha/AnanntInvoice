@@ -104,7 +104,7 @@ class CustomerController extends Controller
         $node->contact = $request->contact;
         $node->school = $request->school;
         $node->city = $request->city;
-        $node->total_fee = $request->discounted_fee;
+        $node->total_fee = $request->total_fee + $vat_amount;
         $node->discount = $request->discount;
         if($request->discount_amount){
             $node->discount_amount = $request->discount_amount;  
@@ -114,7 +114,7 @@ class CustomerController extends Controller
             $node->discount_amount = $discount_amount;
         }
         
-        $node->discounted_fee = $request->discounted_fee_before_vat;
+        $node->discounted_fee = $request->discounted_fee;
         $node->paid_amount = $request->paid_amount;
         $node->due_amount = $request->due_amount;
         
@@ -128,7 +128,7 @@ class CustomerController extends Controller
         $invoice->due_date = $request->due_date;
         $invoice->note = $request->note;
 
-        $invoice->total_fee = $request->total_fee;
+        $invoice->total_fee = $request->total_fee + $vat_amount;
         $invoice->discount = $request->discount;
         if($request->discount_amount){
             $invoice->discount_amount = $request->discount_amount;  
@@ -137,14 +137,14 @@ class CustomerController extends Controller
             $discount_amount = $request->total_fee - $request->discounted_fee_before_vat;
             $invoice->discount_amount = $discount_amount;
         }
-        $invoice->discounted_fee = $request->discounted_fee_before_vat;
+        $invoice->discounted_fee = $request->discounted_fee;
         $invoice->paid_amount = $request->paid_amount;
         $invoice->due_amount = $request->due_amount;
         $invoice->vat = $request->vat;
         if($request->vat == 1){
             $invoice->vat_amount = $request->discounted_fee - $request->discounted_fee_before_vat;
         }
-        $invoice->fee_after_vat = $request->discounted_fee;
+        $invoice->fee_before_vat = $request->discounted_fee_before_vat;
         $invoice->previous_paid = 0;
         $invoice->previous_due = 0;
         $invoice->previous_discount = 0;
@@ -295,7 +295,6 @@ class CustomerController extends Controller
     {
         //
         DubaiCourses::where(['fk_customer_id'=>$id])->delete();
-        DubaiInvoices::where(['fk_customer_id'=>$id])->delete();
         DubaiCustomer::where(['id'=>$id])->delete();
         return redirect()->back();
 

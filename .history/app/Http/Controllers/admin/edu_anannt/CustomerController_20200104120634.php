@@ -104,7 +104,7 @@ class CustomerController extends Controller
         $node->contact = $request->contact;
         $node->school = $request->school;
         $node->city = $request->city;
-        $node->total_fee = $request->discounted_fee;
+        $node->total_fee = $request->total_fee + $vat_amount;
         $node->discount = $request->discount;
         if($request->discount_amount){
             $node->discount_amount = $request->discount_amount;  
@@ -128,7 +128,7 @@ class CustomerController extends Controller
         $invoice->due_date = $request->due_date;
         $invoice->note = $request->note;
 
-        $invoice->total_fee = $request->total_fee;
+        $invoice->total_fee = $request->total_fee + $vat_amount;
         $invoice->discount = $request->discount;
         if($request->discount_amount){
             $invoice->discount_amount = $request->discount_amount;  
@@ -295,7 +295,6 @@ class CustomerController extends Controller
     {
         //
         DubaiCourses::where(['fk_customer_id'=>$id])->delete();
-        DubaiInvoices::where(['fk_customer_id'=>$id])->delete();
         DubaiCustomer::where(['id'=>$id])->delete();
         return redirect()->back();
 

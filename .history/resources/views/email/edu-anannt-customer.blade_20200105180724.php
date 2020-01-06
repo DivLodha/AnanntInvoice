@@ -92,13 +92,8 @@
                                     <tr>
                                         <td>Total Fee</td>
                                         <td><span class="font-weight-bold">dh {{$invoice->total_fee}}</span></td>
-                                        @if($invoice->vat == 1)
                                         <td></td>
                                         <td></td>
-                                        @else
-                                        <td><span class="font-weight-bold">dh {{$invoice->paid_amount}}</span></td>
-                                        <td><span class="font-weight-bold">dh {{$invoice->due_amount}}</span></td>
-                                        @endif
                                         
                                     </tr>
                                     @endif
