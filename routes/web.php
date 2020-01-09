@@ -43,24 +43,26 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'admin'], function() 
     Route::get('customer/pagination/fetch_data' , 'admin\CustomerController@fetch_data');
     //Route::resource('contact-us', 'admin\forms\ContactUsController');
 
-    Route::group(['prefix' => 'edu-anannt'], function() {
-
-        Route::resource('invoice', 'admin\edu_anannt\InvoiceController');
-        //Route::get('invoice','admin\edu_anannt\InvoiceController@index');
-        Route::get('invoice/create/{id}','admin\edu_anannt\InvoiceController@create');
-        Route::get('invoice/pdf/{id}','admin\edu_anannt\InvoiceController@pdf');
-        Route::get('invoice/view-all/{id}','admin\edu_anannt\InvoiceController@viewAll');
-        Route::post('invoice/store/{id}','admin\edu_anannt\InvoiceController@store');
-        Route::resource('customer', 'admin\edu_anannt\CustomerController');
-        Route::post('/invoice-pdf', 'admin\edu_anannt\InvoiceController@pdfdownload');
-        Route::get('invoice-pdf/{invoice_no}', 'admin\edu_anannt\InvoiceController@pdfdownload');
-        //Route::get('pdf', 'InvoiceController@pdfdownload');
-        Route::get('users/{id}/view', 'admin\edu_anannt\UserController@view');
-        Route::get('invoice/pagination/fetch_data' , 'admin\edu_anannt\InvoiceController@fetch_data');
-        Route::get('customer/pagination/fetch_data' , 'admin\edu_anannt\CustomerController@fetch_data');
-    });
     
 
    
 });
+
+Route::group(['prefix' => 'administrator/edu-anannt', 'middleware' => 'admin'], function() {
+
+    Route::resource('invoice', 'admin\edu_anannt\InvoiceController');
+    //Route::get('invoice','admin\edu_anannt\InvoiceController@index');
+    Route::get('invoice/create/{id}','admin\edu_anannt\InvoiceController@create');
+    Route::get('invoice/pdf/{id}','admin\edu_anannt\InvoiceController@pdf');
+    Route::get('invoice/view-all/{id}','admin\edu_anannt\InvoiceController@viewAll');
+    Route::post('invoice/store/{id}','admin\edu_anannt\InvoiceController@store');
+    Route::resource('customer', 'admin\edu_anannt\CustomerController');
+    Route::post('/invoice-pdf', 'admin\edu_anannt\InvoiceController@pdfdownload');
+    Route::get('invoice-pdf/{invoice_no}', 'admin\edu_anannt\InvoiceController@pdfdownload');
+    //Route::get('pdf', 'InvoiceController@pdfdownload');
+    //Route::get('users/{id}/view', 'admin\edu_anannt\UserController@view');
+    Route::get('invoice/pagination/fetch_data' , 'admin\edu_anannt\InvoiceController@fetch_data');
+    Route::get('customer/pagination/fetch_data' , 'admin\edu_anannt\CustomerController@fetch_data');
+});
+
 

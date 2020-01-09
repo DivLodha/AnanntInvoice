@@ -33,7 +33,7 @@ foreach ($list as $record) {?>
         </li>
         <li><a href="javascript:{}" onclick="document.getElementById('my_form{{$record->id}}').submit();">
         <i class="icon-trash"></i> Delete </a></li>
-        <form action="{{admin_url("customer/")}}/{{$record->id}}" method="post" id="my_form{{$record->id}}">
+        <form action="{{admin_url('customer')}}/{{$record->id}}" method="post" id="my_form{{$record->id}}">
             {!! method_field('delete') !!}
             {!! csrf_field() !!}    
           </form>

@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                        <form action="{{route('invoice.update',$invoice->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('invoice.update',$invoice->id)}}" id="dubai-edit-invoice" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     {{ method_field('PATCH') }}
                                     
@@ -42,11 +42,11 @@
                                          </div>
                                         <div class="form-group col-sm-6">
                                             <!-- <label for="name">Date : </label> -->
-                                            <input type="date" name="date" id="date" placeholder="Date" title="Date" value="{{old('name',$invoice->invoice_date)}}" class="form-control input-md" required>
+                                            <input type="date" name="date" id="date" placeholder="Date" title="Date is Required" value="{{old('name',$invoice->invoice_date)}}" class="form-control input-md" required>
                                          </div>
                                         <div class="form-group col-sm-6">
                                             <!-- <label for="name">Name : </label> -->
-                                            <input type="text" name="name" id="name" placeholder="Name" title="Name" value="{{old('name',$record->name)}}" class="form-control input-md" required readonly>
+                                            <input type="text" name="name" id="name" placeholder="Name" title="Name is Required" value="{{old('name',$record->name)}}" class="form-control input-md" required readonly>
                                         </div>
                                          <div class="form-group col-sm-6">
                                             <!-- <label for="name">Email Id : </label> -->
@@ -110,7 +110,7 @@
                                                         </select> 
                                                 </div>
                                                 <div class="form-group col-sm-6"> 
-                                                <input type="text" name="course{{$count}}_fee" id="course{{$count}}_fee" placeholder="Course Fee" value="{{old('course_fee',$item->course_fee)}}" class="form-control input-md" required> 
+                                                <input type="text" name="course{{$count}}_fee" id="course{{$count}}_fee" placeholder="Course Fee" value="{{old('course_fee',$item->course_fee)}}" class="form-control input-md course_fee" required> 
                                                 </div>
                                                 <div class="form-group col-sm-4"> 
                                                 <input type="number" name="course{{$count}}_sort_order" id="course{{$count++}}_sort_order" placeholder="Row No" value="{{old('course_sort_order',$item->course_sort_order)}}" class="form-control input-md hide" required> 
@@ -194,10 +194,20 @@
                                             <label for="Discounted FEE">Total Discount : </label>
                                             <input type="number" name="total_discount" id="total_discount" placeholder="Total Discount" title="Total Discount" value="{{old('total_discount',$record->discount_amount)}}" class="form-control input-md" required readonly>
                                          </div>
-
+                                         <div class="form-group col-sm-6">
+                                         <label for="vat">VAT : </label>
+                                            
+                                            <select name="vat" id="vat" class="form-control input-md" aria-invalid="false" required>
+                                                <option value="">Please select option</option>
+                                                <option value="1" @if($invoice->vat==1) selected @endif>YES</option>
+                                                <option value="0" @if($invoice->vat==0) selected @endif>NO</option>
+                                            </select>
+                                            
+                                         </div>
+                                         <input type="hidden" name="discounted_fee_before_vat" id="discounted_fee_before_vat" placeholder="Discounted Fee" value="{{$invoice->discounted_fee}}">
                                          <div class="form-group col-sm-6">
                                             <label for="Discounted FEE">New Discounted FEE : </label>
-                                            <input type="number" name="discounted_fee" id="discounted_fee" placeholder="Discounted Fee" title="Discounted Fee" value="{{old('discounted_fee',$invoice->discounted_fee)}}" class="form-control input-md" required readonly>
+                                            <input type="number" name="discounted_fee" id="discounted_fee" placeholder="Discounted Fee" title="Discounted Fee is Required" value="{{old('discounted_fee',$invoice->fee_after_vat)}}" class="form-control input-md" required readonly>
                                          </div>
                                          
                                          <div class="clearfix"></div>
@@ -217,12 +227,12 @@
                                         </div>
                                         <div class="form-group col-sm-6">
                                             <label for="paid_amount">Paid Amount : </label>
-                                            <input type="number" name="paid_amount" id="paid_amount" placeholder="Paid Amount" title="Paid Amount" value="{{old('paid_amount',$invoice->paid_amount)}}" class="form-control input-md" required>
+                                            <input type="number" name="paid_amount" id="paid_amount" placeholder="Paid Amount" title="Paid Amount is Required" value="{{old('paid_amount',$invoice->paid_amount)}}" class="form-control input-md" required>
                                          </div>
                                          <div class="clearfix"></div>
                                          <div class="form-group col-sm-6">
                                             <label for="due_amount">Due Amount : </label>
-                                            <input type="number" name="due_amount" id="due_amount" placeholder="Due Amount" title="Due Amount" value="{{old('due_amount',$invoice->due_amount)}}" class="form-control input-md" required readonly>
+                                            <input type="number" name="due_amount" id="due_amount" placeholder="Due Amount" title="Due Amount is Required" value="{{old('due_amount',$invoice->due_amount)}}" class="form-control input-md" required readonly>
                                          </div>
                                          <div class="form-group col-sm-6">
                                             <label for="due_date">Due Date : </label>
@@ -242,8 +252,9 @@
                                    
                                         <input type="hidden" name="courses_opted" id="courses_opted" value="" />
                                        
-                                        <button type="submit" class="btn grey">Submit</button>
-                                        <a href="{{admin_url('invoice')}}" class="btn grey">Back</a>
+                                        <!-- <button type="submit" class="btn grey">Submit</button> -->
+                                        <a href="javascript:void(0)" id="dubai_edit_invoice" onclick="btn_click('#dubai-edit-invoice','#dubai_edit_invoice');" class="btn grey">Submit</a>
+                                        <a href="{{admin_url('edu-anannt/invoice')}}" class="btn grey">Back</a>
                                 </form>
                         </div>
                         </div>
@@ -262,17 +273,18 @@
 @endsection
 @section('scripts')
 <script src="{{asset('admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')}}" type="text/javascript"></script>
-
+<script type="text/javascript" src="{{asset('assets/js/validate-function.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
 
         $("#add_course_row").on("click",function(){
         var count = $(".course_container").last().data("count");
         count=count+1;
-        var custom_section = '<div class="col-sm-12 course_container" id="course_container'+count+'" data-count="'+count+'"> <h5><strong>Course '+count+'</strong></h5> <div class="remove pull-right"><a href="javascript:;" data-remove="#course_container'+count+'" class="btn btn-default remove_icon"> <i class="icon-trash"></i></a></div> <div class="clearfix"></div><br/><div class="form-group col-sm-6">  <select name="course'+count+'_name" id="course'+count+'_name" class="form-control input-md course-name" aria-invalid="false" required> <option value=" ">Please select course</option> <option value="GRE Group">GRE Group</option><option value="GRE One-on-One">GRE One-on-One</option><option value="GMAT Group">GMAT Group</option><option value="GMAT One-on-One">GMAT One-on-One</option> <option value="TOEFL">TOEFL</option> <option value="SAT">SAT</option> <option value="ACT">ACT</option> <option value="IELTS-General">IELTS-General</option> <option value="IELTS-Academic">IELTS-Academic</option> <option value="MS Admissions Counselling">MS Admissions Counselling</option> <option value="MBA Admissions Counselling">MBA Admissions Counselling</option> <option value="Under-Grad Admissions Counselling">Under-Grad Admissions Counselling</option><option value="Boaster Camp">Boaster Camp</option><option value="Refresher Course">Refresher Course</option><option value="Other">Other</option> </select> </div> <div class="form-group col-sm-6">  <input type="text" name="course'+count+'_fee" id="course'+count+'_fee" placeholder="Course Fee" value="" class="form-control input-md" required> </div> <div class="form-group col-sm-4"> <input type="number" name="course'+count+'_sort_order" id="course'+count+'_sort_order" placeholder="Row No" value="'+count+'" class="form-control input-md hide" required> </div> <hr> </div>';
+        var custom_section = '<div class="col-sm-12 course_container" id="course_container'+count+'" data-count="'+count+'"> <h5><strong>Course '+count+'</strong></h5> <div class="remove pull-right"><a href="javascript:;" data-remove="#course_container'+count+'" class="btn btn-default remove_icon"> <i class="icon-trash"></i></a></div> <div class="clearfix"></div><br/><div class="form-group col-sm-6">  <select name="course'+count+'_name" id="course'+count+'_name" class="form-control input-md course-name" aria-invalid="false" required> <option value="">Please select course</option> <option value="GRE Group">GRE Group</option><option value="GRE One-on-One">GRE One-on-One</option><option value="GMAT Group">GMAT Group</option><option value="GMAT One-on-One">GMAT One-on-One</option> <option value="TOEFL">TOEFL</option> <option value="SAT Group">SAT Group</option><option value="SAT One-on-One">SAT One-on-One</option> <option value="ACT">ACT</option> <option value="IELTS-General">IELTS-General</option> <option value="IELTS-Academic">IELTS-Academic</option> <option value="MS Admissions Counselling">MS Admissions Counselling</option> <option value="MBA Admissions Counselling">MBA Admissions Counselling</option> <option value="Under-Grad Admissions Counselling">Under-Grad Admissions Counselling</option><option value="Boaster Camp">Boaster Camp</option><option value="Refresher Course">Refresher Course</option><option value="Other">Other</option> </select> </div> <div class="form-group col-sm-6">  <input type="text" name="course'+count+'_fee" id="course'+count+'_fee" placeholder="Course Fee" value="" class="form-control input-md course_fee" required> </div> <div class="form-group col-sm-4"> <input type="number" name="course'+count+'_sort_order" id="course'+count+'_sort_order" placeholder="Row No" value="'+count+'" class="form-control input-md hide" required> </div> <hr> </div>';
         $("#course_count").val(count);
         var container_id = "#course_container"+(count-1);
         $(container_id).after(custom_section);
+        $("#discount").val(0);
      });
 
         jQuery(document).on('click', '.minimize', function(){
@@ -312,37 +324,81 @@
         console.log($("#courses_opted").val());
      });
 
-     $("#total_fee").on('click', function(){
-        var count = $(".course_container").last().data("count");
-        var total = 0;
-        for(var i=1; i<=count;i++){
-             total = total + Number($("#course"+i+"_fee").val());
-             console.log(total);
-        }
+    //  $("#total_fee").on('click', function(){
+    //     var count = $(".course_container").last().data("count");
+    //     var total = 0;
+    //     for(var i=1; i<=count;i++){
+    //          total = total + Number($("#course"+i+"_fee").val());
+    //          console.log(total);
+    //     }
         
-        $("#total_fee").val(total);
+    //     $("#total_fee").val(total);
+    //  });
+    jQuery(document).on('input', '.course_fee', function() {	
+        var count = $(".course_container").last().data("count");	
+        var total = 0;	
+        for(var i=1; i<=count;i++){	
+             total = total + Number($("#course"+i+"_fee").val());	
+        }	
+        $("#total_fee").val(total);	
+        $("#discounted_fee_before_vat").val(total);	
+        $("#discounted_fee").val(total);	
+        $("#discount").val(0);	
+        $("#vat").val('');	
      });
 
-     $("#discount").on('change', function(){
-        
-       if($(this).val() == "Discount Amount"){
-            var discount = 0;
-            $("#discount_amount_div").show();
-        }
-        else{
-            var discount = 0;
-            $("#discount_amount_div").show();
-            $("#discount_amount").attr('readonly', 'readonly');
-            $("#discount_amount").val(discount);
-        }
-        var total_fee = Number($("#total_fee").val());
-        var previous_discount = Number($("#previous_discount").val());
-        var new_discount = total_fee * discount;
-        var total_discount = previous_discount + new_discount;
-        var discounted_price = total_fee - total_discount;
-        $("#total_discount").val(total_discount);
-        $("#discounted_fee").val(discounted_price);
-     });
+     $("#discount").on('change', function(){	
+        	
+            if($(this).val() == "Group"){	
+                var discount = 10/100;	
+                $("#discount_amount_div").hide();	
+                $("#discount_amount").val('');	
+                $("#discount_amount").removeAttr('required');	
+            }	
+            else if($(this).val() == "Discount Amount"){	
+                var discount = 0;	
+                $("#discount_amount_div").show();	
+                $("#discount_amount").attr('required','true');	
+            }	
+            else{	
+                var discount = $(this).val()/100;	
+                $("#discount_amount_div").hide();	
+                $("#discount_amount").val('');	
+                $("#discount_amount").removeAttr('required');	
+            }	
+                
+            var total = Number($("#total_fee").val());	
+            var total_discount = total * discount;	
+            var discounted_price = total - total_discount;	
+            $("#discounted_fee").val(discounted_price);	
+            $("#discounted_fee_before_vat").val(discounted_price);	
+            $("#vat").val('');        	
+         });
+
+         $("#vat").on('change', function(){	
+        	$("#due_amount").val(''); 
+            if($(this).val() == "1"){	
+                var total = Number($("#discounted_fee_before_vat").val());	
+                vat = total*0.05;	
+                total = total+vat;	
+                $("#discounted_fee").val(total);	
+            }else{	
+                $("#discounted_fee").val($("#discounted_fee_before_vat").val());	
+            }	
+                
+         });
+
+    $(document).on('input', '#discount_amount', function(){	
+        if($("#discount option:selected").text()== "Discount Amount"){	
+            var total = Number($("#total_fee").val());	
+            var total_discount = Number($('#discount_amount').val());	
+            var discounted_price = total - total_discount;	
+            $("#discounted_fee").val(discounted_price);	
+            $("#discounted_fee_before_vat").val(discounted_price);	
+            $("#vat").val(''); 	
+            //console.log(total_discount);	
+        }	
+    });
 
      $("#total_discount").on('click', function(){
         

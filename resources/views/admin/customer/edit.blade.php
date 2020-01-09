@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                        <form action="{{route('customer.update',$record->id)}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{admin_url('customer')}}/{{$record->id}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     {{ method_field('PATCH') }}
                                        <div class="form-group col-sm-6">

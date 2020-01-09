@@ -281,6 +281,7 @@ class CustomerController extends Controller
     {
         //
         Course::where(['fk_customer_id'=>$id])->delete();
+        Invoice::where(['fk_customer_id'=>$id])->delete();
         Customer::where(['id'=>$id])->delete();
         return redirect()->back();
 

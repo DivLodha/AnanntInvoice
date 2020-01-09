@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="portlet-body">
-                        <form action="{{route('customer.store')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{admin_url('customer')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                        <div class="form-group col-sm-6">
                                             <!-- <label for="name">Invoice Number : yymm</label> -->

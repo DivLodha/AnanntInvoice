@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="col-md-6 text-center">
-                            <img src="{{url('assets/images/logo.png')}}" style="width: 75%; max-width: 300px">
+                            <img src="{{url('assets/images/logo2.jpg')}}" style="width: 75%; max-width: 300px">
                         </div>
                     </div>
 
@@ -77,7 +77,7 @@
                                     @if($invoice->discount_amount != 0)
                                     <tr>
                                         <td>Total Fee</td>
-                                        <td><span class="font-weight-bold">dh {{$invoice->total_fee - $invoice->vat_amount}}</span></td>
+                                        <td><span class="font-weight-bold">dh {{$invoice->total_fee}}</span></td>
                                         <td></td>
                                         <td></td>
                                         
@@ -85,8 +85,13 @@
                                     <tr>
                                         <td>Discounted Fee</td>
                                         <td><span class="font-weight-bold">dh {{$invoice->discounted_fee}}</span></td>
+                                        @if($invoice->vat == 1)
                                         <td></td>
-                                        <td></td>    
+                                        <td></td>
+                                        @else
+                                        <td><span class="font-weight-bold">dh {{$invoice->paid_amount}}</span></td>
+                                        <td><span class="font-weight-bold">dh {{$invoice->due_amount}}</span></td>
+                                        @endif    
                                     </tr>
                                     @else
                                     <tr>
@@ -156,8 +161,9 @@
                         <ol>
                             <li>Cancellation of classes are NOT allowed unless agreed by both the parties.</li>
                             <li>We have NO Refund/transfer policy.</li>
-                            <li>For any further queries please feel free to email at support@anannt.com</li>
+                            <li>For any further queries please feel free to email at wecare@anannt.ae</li>
                             <li>NO score guarantee offered.</li>
+                            <li>Updated receipt with TRN will be shared.</li>
                         </ol>   
                     </div>
                 </div>
